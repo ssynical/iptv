@@ -4,33 +4,33 @@
 - [x] project structure setup
 - [x] database models and schemas
 - [x] basic authentication system
-- [ ] core api endpoints structure
+- [x] core api endpoints structure
 
 ## authentication & user management
 - [x] user registration/login endpoints
 - [x] token-based authentication
-- [ ] user permissions and roles
-- [ ] subscription management
-  - user subscription status
-  - expiry date handling
-  - active connections tracking
+- [x] user permissions and roles
+- [x] subscription management
+  - [x] user subscription status
+  - [x] expiry date handling
+  - [ ] active connections tracking
 
 ## xtream codes api compatibility
-- [ ] player_api.php endpoints
-  - get_series_categories
-  - get_vod_categories  
-  - get_live_categories
-  - get_series
-  - get_vod_streams
-  - get_live_streams
-  - get_series_info
-  - get_vod_info
+- [x] player_api.php endpoints (basic)
+  - [x] get_series_categories
+  - [x] get_vod_categories  
+  - [x] get_live_categories
+  - [x] get_series
+  - [x] get_vod_streams
+  - [x] get_live_streams
+  - [ ] get_series_info
+  - [ ] get_vod_info
 - [ ] xmltv epg support
 - [ ] m3u playlist generation
 
 ## content management
-- [ ] stream/channel crud operations
-- [ ] category management system
+- [x] stream/channel crud operations
+- [x] category management system
 - [ ] series/vod metadata handling
 - [ ] epg data management
 
@@ -41,8 +41,8 @@
 - [ ] stream health monitoring
 
 ## admin panel backend
-- [ ] user management endpoints
-- [ ] content management endpoints
+- [x] user management endpoints (basic)
+- [x] content management endpoints (basic)
 - [ ] statistics and analytics
 - [ ] system monitoring endpoints
 
@@ -57,11 +57,19 @@
 - [ ] rate limiting
 - [ ] security hardening
 - [ ] performance optimization
-- [ ] deployment configuration
+- [x] deployment configuration (docker)
 
 ## finishing touches
 - [ ] api documentation
 - [ ] unit tests
 - [ ] integration tests
-- [ ] docker containerization
+- [x] docker containerization
 - [ ] ci/cd pipeline setup
+
+## next immediate priorities
+- [ ] m3u playlist generation
+- [ ] stream url generation with authentication
+- [ ] connection limits enforcement
+- [ ] get_series_info and get_vod_info endpoints
+- [ ] series episodes management
+- [ ] xmltv epg basic support
