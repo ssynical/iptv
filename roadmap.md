@@ -1,14 +1,14 @@
 # iptv backend roadmap
 
 ## core foundation
-- [ ] project structure setup
-- [ ] database models and schemas
-- [ ] basic authentication system
+- [x] project structure setup
+- [x] database models and schemas
+- [x] basic authentication system
 - [ ] core api endpoints structure
 
 ## authentication & user management
-- [ ] user registration/login endpoints
-- [ ] token-based authentication
+- [x] user registration/login endpoints
+- [x] token-based authentication
 - [ ] user permissions and roles
 - [ ] subscription management
   - user subscription status

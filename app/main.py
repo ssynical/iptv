@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from app.config import settings
 from app.database import connect_to_mongo, close_mongo_connection, get_database
+from app.api.auth import router as auth_router
 
 app = FastAPI(
     title="IPTV Backend",
@@ -8,6 +9,8 @@ app = FastAPI(
     version="1.0.0",
     debug=settings.debug
 )
+
+app.include_router(auth_router)
 
 @app.on_event("startup")
 async def startup_event():
