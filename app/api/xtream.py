@@ -45,12 +45,8 @@ async def player_api(
     if not subscription:
         return {"user_info": {"auth": 0, "status": "Disabled", "message": "invalid credentials"}}
     
-    if action == "get_live_categories":
-        return await get_live_categories(subscription)
-    elif action == "get_vod_categories":
-        return await get_vod_categories(subscription)
-    elif action == "get_series_categories":
-        return await get_series_categories(subscription)
+    if action in ("get_live_categories", "get_vod_categories", "get_series_categories"):
+        return await get_categories(subscription)
     elif action == "get_live_streams":
         return await get_live_streams(subscription, category_id)
     elif action == "get_vod_streams":
@@ -60,37 +56,7 @@ async def player_api(
     else:
         raise HTTPException(status_code=400, detail="invalid action")
 
-async def get_live_categories(subscription: Subscription) -> List[Dict[str, Any]]:
-    db = get_database()
-    categories = await db.categories.find({"parent_id": {"$in": [None, ""]}}).sort("sort_order", 1).to_list(None)
-    
-    result = []
-    for cat in categories:
-        category = Category(**cat)
-        result.append({
-            "category_id": category.category_id,
-            "category_name": category.category_name,
-            "parent_id": 0
-        })
-    
-    return result
-
-async def get_vod_categories(subscription: Subscription) -> List[Dict[str, Any]]:
-    db = get_database()
-    categories = await db.categories.find({"parent_id": {"$in": [None, ""]}}).sort("sort_order", 1).to_list(None)
-    
-    result = []
-    for cat in categories:
-        category = Category(**cat)
-        result.append({
-            "category_id": category.category_id,
-            "category_name": category.category_name,
-            "parent_id": 0
-        })
-    
-    return result
-
-async def get_series_categories(subscription: Subscription) -> List[Dict[str, Any]]:
+async def get_categories(subscription: Subscription) -> List[Dict[str, Any]]:
     db = get_database()
     categories = await db.categories.find({"parent_id": {"$in": [None, ""]}}).sort("sort_order", 1).to_list(None)
     
