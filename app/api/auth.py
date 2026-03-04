@@ -108,7 +108,13 @@ async def delete_user(username: str, current_user: UserInDB = Depends(get_curren
     return {"message": f"user {username} deleted successfully"}
 
 @router.post("/promote-admin/{username}")
-async def promote_to_admin(username: str):
+async def promote_to_admin(username: str, current_user: UserInDB = Depends(get_current_user)):
+    if not current_user.is_admin:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="admin access required"
+        )
+    
     db = get_database()
     result = await db.users.update_one(
         {"username": username},
