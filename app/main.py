@@ -31,12 +31,3 @@ async def root():
 @app.get("/health")
 async def health_check():
     return {"status": "healthy"}
-
-@app.get("/db-test")
-async def test_database():
-    try:
-        db = get_database()
-        result = await db.command("ping")
-        return {"database": "connected", "ping": result}
-    except Exception as e:
-        return {"database": "error", "message": str(e)}
